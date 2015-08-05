@@ -1,0 +1,63 @@
+<h2>3. Evaluation Result ontology Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p><a href="#figure_ont">Figure 1</a> shows an overview of the Evaluation Result ontology and how the concepts relate to one another. 
+</br></br>
+
+The <a href="#Evaluation"><i>Evaluation</i></a> class represents the process of evaluation, in which a particular product, service or action is evaluated (<a href="#EvaluationSubject"><i>EvaluationSubject</i></a> class). Each evaluation produces a quality value (represented by the <a href="#QualityValue"><i>QualityValue</i></a> class) which is related to a particular quality measure (<a href="#http://purl.org/net/QualityModel#QualityMeasure"><i>qmo:QualityMeasure</i></a>), and uses some input data (e.g, a document) which is represented by the <a href="#EvaluationData"><i>EvaluationData</i></a> class. Finally, each evaluation subject belongs to a certain category of products, services or actions, which is represented by the <a href="#SubjectCategory"><i>SubjectCategory</i></a> class.
+</p>
+
+<div id="figure_ont" class="figure" style="text-align: center;">
+	<img src="images/EVAL.png" alt="A high level overview of the eval" width="1000">
+		<div style="text-align: center;">
+		<a href="#figure_ont">Figure 1</a>. A high level overview of the Evaluation Result ontology.
+		</div>
+	</div>
+	
+<p>
+The Evaluation Result ontology reuses the <i>Ontology of units of Measure and related concepts</i> (om) [1] and the W3C's <a href="http://www.w3.org/TR/owl-time/"><i>Time Ontology</i></a>. Each evaluation is performed in a specific moment in time represented by the <a href="#http://www.w3.org/2006/time#Instant"><i>time:Instant</i></a> class, and each quality value is expressed in a unit of measure (<a href="#http://www.wurvoc.org/vocabularies/om-1.8/Unit_of_measure"><i>om:Unit_of_measure</i></a>) and belongs to a particular scale (<a href="#http://www.wurvoc.org/vocabularies/om-1.8/Measurement_scale"><i>om:Measurement_scale</i></a>), as defined in the <a href="http://purl.org/net/QualityModel#"><i>Quality Model</i></a> ontology. 
+</p>
+
+<p>The Evaluation Result ontology has been evaluated using the <a href="http://oeg-upm.net/oops/">OOPS! pitfall scanner</a> [<a href="#ref4">2</a>].
+</p>
+	
+<div id="example">
+<h2>3.1 Illustrative Example</h2>
+<p><a href="#example_code">Listing 1</a> presents a short illustrative example of evaluation results data related to one <a href="http://delicias.dia.fi.upm.es/semquare/index.php/Ontology_Matching_Tools">ontology matching tool</a> (YAM++), which continues from the <a href="http://purl.org/net/QualityModel#example">example presented in the Quality Model ontology</a>. For the sake of simplicity, datatype declarations are omitted. 
+</p>
+
+<div class="code" id="example_code">
+@prefix ex: &lt;http://example.com&gt; .<br />
+@prefix qmo: &lt;http://purl.org/net/QualityModel#&gt; .<br />
+@prefix eval: &lt;http://purl.org/net/EvaluationResult#&gt; .<br />
+@prefix time: &lt;http://www.w3.org/2006/time#&gt; .<br />
+@prefix dc: &lt;http://purl.org/dc/terms/&gt; .<br />
+<br />
+&lt;ex:Evaluation1&gt; a eval:Evaluation ;<br />
+     eval:evaluatedSubject &lt;ex:YAM++&gt; ;<br />
+     eval:inputData &lt;ex:Ontology1&gt; ;<br />
+     eval:inputData &lt;ex:Ontology2&gt; ;<br />
+     eval:inputData &lt;ex:ExpectedAlignment&gt; ;<br />
+     eval:producedQualityValue &lt;ex:QualityValue1&gt; ;<br />
+     eval:time &lt;ex:Instant1&gt; .<br />
+     <br />
+&lt;ex:YAM++&gt; a eval:EvaluationSubject ;<br />
+     dc:title "YAM++" ;<br />
+     eval:belongsToCategory &lt;ex:OntologyMatchingTools&gt; .<br />
+     <br />
+&lt;ex:QualityValue1&gt; a eval:QualityValue ;<br />
+     eval:hasLiteralValue "0.86" ; <br />
+     eval:obtainedFrom &lt;ex:Evaluation1&gt; ;<br />
+     eval:forMeasure &lt;ex:AverageAlignmentPrecision&gt; ;<br />
+     eval:isMeasuredOnScale &lt;ex:PrecisionScale&gt; .<br />
+     <br />
+&lt;ex:Instant1&gt; a time:Instant ;<br />
+     time:inXSDDateTime "2015-03-13T03:25:00" .<br />
+     <br />
+&lt;ex:Ontology1&gt; a eval:EvaluationData .<br />
+&lt;ex:Ontology2&gt; a eval:EvaluationData .  <br />
+&lt;ex:ExpectedAlignment&gt; a eval:EvaluationData . <br />
+</div>
+<br />
+        <div style="text-align: center;">
+		<a href="#example_code">Listing 1</a>. Illustrative example of evaluation result data related to YAM++ <a href="http://delicias.dia.fi.upm.es/semquare/index.php/Ontology_Matching_Tools">ontology matching tool.</a>
+</div>
+</div>
