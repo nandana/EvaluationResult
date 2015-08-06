@@ -70,8 +70,8 @@
     <!-- http://purl.org/dc/elements/1.1/title -->
 
     <owl:AnnotationProperty rdf:about="&dc;title">
-        <rdfs:domain rdf:resource="http://purl.org/net/EvaluationResultsOntology#EvaluationSubject"/>
-        <rdfs:domain rdf:resource="http://purl.org/net/EvaluationResultsOntology#SubjectCategory"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/EvaluationResult#EvaluationSubject"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/EvaluationResult#SubjectCategory"/>
     </owl:AnnotationProperty>
     
 
