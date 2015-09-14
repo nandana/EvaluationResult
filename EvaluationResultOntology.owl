@@ -159,7 +159,7 @@
 
     <owl:ObjectProperty rdf:about="&eval;inputData">
         <rdfs:label>inputData</rdfs:label>
-        <rdfs:comment>Denotes inout data that is used in an evaluation.</rdfs:comment>
+        <rdfs:comment>Denotes input data that is used in an evaluation.</rdfs:comment>
         <rdfs:domain rdf:resource="&eval;Evaluation"/>
         <rdfs:range rdf:resource="&eval;EvaluationData"/>
     </owl:ObjectProperty>
